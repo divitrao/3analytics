@@ -16,8 +16,44 @@ class UserSerializer(serializers.ModelSerializer):
         validators=[UniqueValidator(queryset=CustomUser.objects.all())]
     )
     password = serializers.CharField(
-        write_only=True, required=True, validators=[validate_password])
+        required=True, validators=[validate_password])
+
+    password2 = serializers.CharField(
+        required=True, validators=[validate_password])
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password')
+        fields = ('email', 'password', 'password2')
+
+    def validate(self, attrs):
+        if attrs['password'] != attrs['password2']:
+            raise serializers.ValidationError(
+                {"password": "Password fields didn't match."})
+
+        return attrs
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(
+        required=True, validators=[validate_password])
+    new_password2 = serializers.CharField(
+        required=True, validators=[validate_password])
+
+    def validate(self, attrs):
+        attrs = super().validate(attrs)
+        request = self.context['request']
+        if not request.user.check_password(attrs['old_password']):
+            raise serializers.ValidationError("old password dont match")
+
+        if attrs['new_password'] != attrs['new_password2']:
+            raise serializers.ValidationError(
+                {"password": "New Password fields didn't match."})
+
+        return attrs
+
+    def update(self, instance, validated_data):
+
+        instance.set_password(validated_data['new_password'])
+        instance.save()
+        return instance

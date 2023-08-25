@@ -9,11 +9,3 @@ class CreateGetSocialLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialLinks
         fields = ("id", "links", "custom_user", "date_created")
-
-    def validate(self, attrs):
-        request = self.context['request']
-        if not request.user.is_superuser:
-            raise serializers.ValidationError(
-                "you are not authenticated to create links")
-        attrs = super().validate(attrs)
-        return attrs

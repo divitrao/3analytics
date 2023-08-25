@@ -12,9 +12,9 @@ class CreateGetSocialLinks(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context['request'] = self.request
-        return context
+        if not self.request.user.is_superuser:
+            self.permission_denied(self.request)
+        return super().get_serializer_context()
 
     def perform_create(self, serializer):
         return serializer.save(custom_user=self.request.user)
