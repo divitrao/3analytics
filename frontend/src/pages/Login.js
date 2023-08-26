@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axiosInstance from "../service/axiosConfig";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 function Copyright(props) {
   return (
     <Typography
@@ -35,6 +36,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -60,6 +62,7 @@ export default function SignIn() {
         }
       })
       .catch((e) => {
+        enqueueSnackbar(JSON.stringify(e.response.data), { variant: "error" });
         console.log("yyyy");
       });
   };
@@ -134,7 +137,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

@@ -4,12 +4,13 @@ import PinnedSubheaderList from "../components/List";
 import { Box } from "@mui/material";
 import axiosInstance from "../service/axiosConfig";
 import Loading from "../components/Loading";
+import { useSnackbar } from "notistack";
 
 const Home = () => {
   const [showLoader, setShowLoader] = React.useState(true);
   const [linkList, setShowLinkList] = React.useState([]);
   const [error, setError] = React.useState(false);
-
+  const { enqueueSnackbar } = useSnackbar();
   React.useEffect(() => {
     axiosInstance
       .get("social-link/create-get-social-link/")
@@ -22,6 +23,7 @@ const Home = () => {
         }
       })
       .catch((e) => {
+        enqueueSnackbar(JSON.stringify(e.response.data), { variant: "error" });
         setError(true);
         setShowLoader(false);
       });

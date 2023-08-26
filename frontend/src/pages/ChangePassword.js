@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axiosInstance from "../service/axiosConfig";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 function Copyright(props) {
   return (
@@ -38,6 +39,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function ChangePassword() {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -62,7 +64,8 @@ export default function ChangePassword() {
         }
       })
       .catch((e) => {
-        console.log("yyyy");
+        enqueueSnackbar(JSON.stringify(e.response.data), { variant: "error" });
+        console.log(e.response.data);
       });
   };
 
@@ -147,7 +150,6 @@ export default function ChangePassword() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
