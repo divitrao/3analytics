@@ -45,7 +45,7 @@ Before you begin, make sure you have the following software installed:
   pip install -r requirements.txt
   ```
 
-4. Create an `.env` file in the `django_backend` directory and add the necessary environment variables as mentioned in the `env.sample` file.
+4. Create an `.env` file in the `django_backend` directory and add the necessary environment variables as mentioned in the `env.sample` file. For now i'm pasting my env in env.sample copy paste the same in .env and replace postgres related variable as per your requirements
 
 5. Run the following commands to set up the database:
 
@@ -56,9 +56,21 @@ Before you begin, make sure you have the following software installed:
 
 6. You're all set! The project is now ready to be run.
 
+## Frontend Project Setup
+
+To set up the frontend project, please follow these steps:
+
+1. Open your terminal.
+2. Navigate to the `react_frontend` directory using the command:
+   - ` cd react_frontend `
+3. Install the required dependencies by running the following command:
+   - ` npm i `
+4. Start the development server using the following command:
+   - ` npm start`
+
 ## Usage
 
-At this point, you have successfully installed the project. You can now proceed to run the project using the appropriate commands and start using it.
+At this point, you have successfully installed the project.
 
 ## Troubleshooting
 
