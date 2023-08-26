@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import ChangePassword from "./pages/ChangePassword";
 import CreateLink from "./pages/CreateLink";
 
-const ESGRoutes = () => {
+const ProjectRoutes = () => {
   const isAuthenticated = localStorage.getItem("access_token") != null;
   return (
     <>
@@ -34,4 +34,4 @@ const ESGRoutes = () => {
   );
 };
 
-export default ESGRoutes;
+export default ProjectRoutes;

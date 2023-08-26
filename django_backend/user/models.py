@@ -18,6 +18,8 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError(_('The Email must be set'))
         email = self.normalize_email(email)
+
+        # as password2 filed is been sent from registration api it need to be removed before saving
         extra_fields.pop("password2", None)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)

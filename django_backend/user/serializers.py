@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import CustomUser
 from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
+from .models import CustomUser
 
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
@@ -11,6 +11,10 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    This serializer is to validate user registration api 
+
+    """
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=CustomUser.objects.all())]
@@ -34,6 +38,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ChangePasswordSerializer(serializers.Serializer):
+
+    """
+    this serializer is to validate the put api for change password and update the users password
+
+    """
+
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(
         required=True, validators=[validate_password])

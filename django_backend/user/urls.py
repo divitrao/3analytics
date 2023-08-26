@@ -9,5 +9,5 @@ urlpatterns = [
          name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('change-password/',
-         ChangePasswordView.as_view({'post': 'change_password'}), name='change_user_password')
+         ChangePasswordView.as_view({'put': 'change_password'}), name='change_user_password')
 ]

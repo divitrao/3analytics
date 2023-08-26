@@ -7,6 +7,11 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class CreateGetSocialLinks(ListCreateAPIView):
+
+    """
+    view to create link  and get list of same links
+    """
+
     serializer_class = CreateGetSocialLinkSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]

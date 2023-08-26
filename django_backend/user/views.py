@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class RegisterView(APIView):
+
     http_method_names = ['post']
 
     def post(self, *args, **kwargs):
@@ -21,6 +22,11 @@ class RegisterView(APIView):
 
 
 class EmailTokenObtainPairView(TokenObtainPairView):
+
+    """
+    This view is to give JWT tokens on login 
+    """
+
     serializer_class = TokenObtainPairSerializer
 
 
@@ -29,7 +35,6 @@ class ChangePasswordView(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
     def change_password(self, request, **kwargs):
-        print("rrrrrrrrrrrrrrrrrrrrrrrr", request.data)
         serializer = ChangePasswordSerializer(
             data=request.data, context={"request": request, 'kwargs': kwargs})
 

@@ -50,7 +50,7 @@ export default function ChangePassword() {
       new_password2: data.get("password2"),
     });
     axiosInstance
-      .post("users/change-password/", {
+      .put("users/change-password/", {
         old_password: data.get("old_password"),
         new_password: data.get("password"),
         new_password2: data.get("password2"),

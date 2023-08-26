@@ -4,6 +4,7 @@ from .models import SocialLinks
 
 class CreateGetSocialLinkSerializer(serializers.ModelSerializer):
 
+    # here user is not required as we are validating user from jwt token
     custom_user = serializers.UUIDField(required=False)
 
     class Meta:

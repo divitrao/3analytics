@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import ESGRoutes from "./Routes";
+import ProjectRoutes from "./Routes";
 import { SnackbarProvider } from "notistack";
 import { MdCancel } from "react-icons/md";
 import { IconButton } from "@mui/material";
@@ -24,7 +24,7 @@ function App() {
           horizontal: "right",
         }}
       >
-        <ESGRoutes />
+        <ProjectRoutes />
       </SnackbarProvider>
     </>
   );
