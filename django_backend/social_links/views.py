@@ -1,8 +1,8 @@
-from .models import SocialLinks
 from rest_framework.generics import ListCreateAPIView
-from .serializers import CreateGetSocialLinkSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
+from .models import SocialLinks
+from .serializers import CreateGetSocialLinkSerializer
 # Create your views here.
 
 

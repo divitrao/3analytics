@@ -1,8 +1,8 @@
-from typing import Iterable, Optional
 import uuid
 from django.forms import ValidationError
-from user.models import CustomUser
 from django.db import models
+from user.models import CustomUser
+
 
 # Create your models here.
 
