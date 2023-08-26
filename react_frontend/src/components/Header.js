@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ error }) {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("access_token");
@@ -33,6 +33,11 @@ export default function Header() {
           component="div"
           sx={{ flexGrow: 1 }}
         ></Typography>
+        {!error && (
+          <Button onClick={() => navigate("/create-link")} color="inherit">
+            Add Links
+          </Button>
+        )}
         <Button onClick={() => navigate("/change-password")} color="inherit">
           Change Password
         </Button>

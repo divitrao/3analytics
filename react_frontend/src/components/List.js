@@ -1,8 +1,7 @@
 import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
+import { Link } from "@mui/material";
 
 export default function PinnedSubheaderList({ linkList }) {
   return (
@@ -20,7 +19,7 @@ export default function PinnedSubheaderList({ linkList }) {
     >
       {linkList.map((item) => (
         <ListItem key={`item--${item.id}`}>
-          <ListItemText primary={item.links} />
+          <Link href={item.links}>{item.links}</Link>
         </ListItem>
       ))}
     </List>

@@ -35,7 +35,7 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          <Header />
+          <Header error={error} />
           <Box
             sx={{
               marginTop: 8,
