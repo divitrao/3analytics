@@ -1,3 +1,7 @@
+# Project Demo Video
+
+![3-analytics-demo](https://github.com/divitrao/3analytics/assets/67967395/e0199f41-d96b-4b0c-8467-a9961e9755a1)
+
 # Project Installation Guide
 
 This guide will help you understand how to install the project on your local machine.
@@ -62,9 +66,9 @@ To set up the frontend project, please follow these steps:
 
 1. Open your terminal.
 2. Navigate to the `react_frontend` directory using the command:
-   - ` cd react_frontend `
+   - `cd react_frontend`
 3. Install the required dependencies by running the following command:
-   - ` npm i `
+   - `npm i`
 4. Start the development server using the following command:
    - ` npm start`
 
